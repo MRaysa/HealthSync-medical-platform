@@ -1,0 +1,44 @@
+{
+  "blogs": [
+    {
+      "id": "blog-1",
+      "title": "What is useState and how does it work in React?",
+      "content": "useState is a fundamental React Hook that enables function components to manage state. It works by returning an array with two elements: the current state value and a function to update that state. When you call the update function, React re-renders the component with the new state. The Hook preserves state between re-renders, making it ideal for tracking component-specific data like form inputs, UI toggles, or any dynamic values. Unlike class component state, useState lets you manage individual state variables separately rather than in one large object.",
+      "date": "2023-05-15",
+      "author": "React Team",
+      "tags": ["react", "hooks", "state"]
+    },
+    {
+      "id": "blog-2",
+      "title": "What is the purpose of useEffect in React?",
+      "content": "The useEffect Hook serves three primary purposes in React: 1) Performing side effects (like data fetching), 2) Subscribing to external data sources, and 3) Manually changing the DOM. It combines the functionality of class lifecycle methods (componentDidMount, componentDidUpdate, componentWillUnmount) into a single API. The Hook runs after every render by default, but you can optimize performance by specifying dependencies. The optional cleanup function helps prevent memory leaks by unsubscribing from effects when components unmount or before re-running the effect.",
+      "date": "2023-06-02",
+      "author": "React Team",
+      "tags": ["react", "hooks", "lifecycle"]
+    },
+    {
+      "id": "blog-3",
+      "title": "What is a custom hook in React and when should you use one?",
+      "content": "A custom Hook is a JavaScript function that starts with 'use' and can call other Hooks. It allows you to extract and reuse stateful logic across components. You should create custom Hooks when: 1) Multiple components use identical logic, 2) Complex component logic needs organization, or 3) You want to share non-visual behavior between components. Common examples include useFetch for data fetching, useLocalStorage for persisting state, or useForm for form handling. Unlike regular functions, custom Hooks can use React Hooks internally and maintain their own state between calls.",
+      "date": "2023-06-20",
+      "author": "React Team",
+      "tags": ["react", "hooks", "custom"]
+    },
+    {
+      "id": "blog-4",
+      "title": "Difference between controlled and uncontrolled components? Which one is better?",
+      "content": "Controlled components manage form data via React state, while uncontrolled components use DOM references. Key differences:\n\n- Controlled: Value handled by React state, changes via callbacks, enables real-time validation\n- Uncontrolled: Values accessed via refs, form data handled by DOM, simpler implementation\n\nControlled components are generally better because they:\n1) Provide a single source of truth\n2) Enable immediate validation and feedback\n3) Make state predictable and testable\n4) Work seamlessly with React's declarative model\n\nUse uncontrolled components only for simple forms where performance is critical or when integrating with non-React code.",
+      "date": "2023-07-05",
+      "author": "React Team",
+      "tags": ["react", "forms", "components"]
+    },
+    {
+      "id": "blog-5",
+      "title": "Tell us something about useFormStatus() (explore and explain)",
+      "content": "useFormStatus() is an experimental React Hook that tracks form submission states. Key features:\n\n1) Submission Tracking: Returns whether a form is currently submitting\n2) Status Details: Provides timestamps of last submission attempt\n3) Outcome Information: Indicates if last submission succeeded/failed\n\nPractical uses include:\n- Showing loading indicators during submission\n- Disabling submit buttons to prevent duplicate submissions\n- Displaying success/error messages\n- Implementing optimistic UI updates\n\nThe Hook works with both native HTML forms and JavaScript form submissions, providing a consistent way to handle form states across your application without manual state management.",
+      "date": "2023-07-18",
+      "author": "React Team",
+      "tags": ["react", "hooks", "forms"]
+    }
+  ]
+}
