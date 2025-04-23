@@ -24,65 +24,67 @@ const DoctorCards = () => {
         </div>
 
         {/* Doctors Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayedDoctors.map((doctor) => (
             <div
               key={doctor.id}
-              className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
+              className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative"
             >
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-0 group-hover:opacity-20 transition-opacity duration-300 z-10"></div>
+
               {/* Doctor Image */}
-              <div className=" bg-gray-100 ">
+              <div className="bg-gray-100 relative overflow-hidden">
                 <img
                   src={doctor.image}
                   alt={doctor.name}
-                  className="w-full  h-[400px]  object-cover p-4 rounded-3xl  object-center"
+                  className="w-full h-[400px] object-cover p-4 rounded-3xl object-center group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
               {/* Doctor Info */}
-              <div className="p-5">
+              <div className="p-5 relative z-20">
                 {/* Availability and Experience - side by side */}
                 <div className="flex gap-4 items-center mb-3">
-                  <div className="flex items-center bg-green-100 rounded-2xl p-2 border border-green-300">
-                    <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  <div className="flex items-center bg-green-100 rounded-2xl p-2 border border-green-300 group-hover:bg-green-200 transition-colors duration-300">
+                    <span className="w-2 h-2 bg-green-500 rounded-full mr-2 group-hover:animate-pulse"></span>
                     <span className="text-xs font-medium text-gray-600">
                       Available
                     </span>
                   </div>
-                  <span className="text-xs font-medium text-blue-600 bg-blue-100 rounded-2xl p-2 border border-blue-300">
+                  <span className="text-xs font-medium text-blue-600 bg-blue-100 rounded-2xl p-2 border border-blue-300 group-hover:bg-blue-200 transition-colors duration-300">
                     {doctor.experience}+ Years Experience
                   </span>
                 </div>
 
-                {/* Doctor Name */}
-                <h3 className="text-lg font-bold text-gray-800 mb-1">
+                {/* Doctor Name with hover effect */}
+                <h3 className="text-lg font-bold text-gray-800 mb-1 group-hover:text-indigo-600 transition-colors duration-300">
                   {doctor.name}
+                  <span className="block w-0 group-hover:w-full h-0.5 bg-indigo-600 transition-all duration-500 mt-1"></span>
                 </h3>
 
                 {/* Education */}
-                <p className="text-sm text-gray-600 mb-2">{doctor.education}</p>
+                <p className="text-sm text-gray-600 mb-2 group-hover:text-gray-800 transition-colors duration-300">
+                  {doctor.education}
+                </p>
 
-                {/* divider */}
-                <div class="border-t-2 border-dashed border-gray-400 my-4"></div>
+                {/* Animated divider */}
+                <div className="border-t border-gray-300 border-dashed my-4 relative overflow-hidden hover:border-gray-400">
+                  <div className="absolute top-0 left-0 w-0 h-full bg-indigo-600 group-hover:w-full transition-all duration-500"></div>
+                </div>
 
                 {/* Registration */}
-                <p className="text-xs text-gray-500 mb-4">
-                  <span className="text-xs w-2">®</span> Reg No:{" "}
+                <p className="text-xs text-gray-500 mb-4 group-hover:text-gray-700 transition-colors duration-300">
+                  <span className="text-xs">®</span> Reg No:{" "}
                   {doctor.registration}
                 </p>
 
-                {/* View Details Button */}
-                {/* <Link
-                  to={`/doctors/${doctor.id}`}
-                  className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-2xl transition-colors"
-                >
-                  View Details
-                </Link> */}
+                {/* Animated View Details Button */}
                 <Link
                   to={`/doctors/${doctor.id}`}
-                  className="relative inline-flex items-center justify-center w-full px-12 py-3 overflow-hidden text-lg font-medium text-indigo-600 border border-indigo-600 rounded-full hover:text-white group hover:bg-gray-50 transition-colors"
+                  className="relative inline-flex items-center justify-center w-full px-12 py-3 overflow-hidden text-lg font-medium text-gray-900 border-2 border-indigo-600 rounded-full hover:text-white group hover:bg-transparent transition-all duration-300"
                 >
-                  <span className="absolute left-0 block w-full h-0 transition-all bg-indigo-600 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+                  <span className="absolute left-0 block w-0 h-full bg-indigo-600 opacity-100 group-hover:w-full transition-all duration-500 ease-in-out top-0"></span>
                   <span className="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
                     <svg
                       className="w-5 h-5"
@@ -99,13 +101,14 @@ const DoctorCards = () => {
                       ></path>
                     </svg>
                   </span>
-                  <span className="relative">View Details</span>
+                  <span className="relative flex items-center">
+                    View Details
+                  </span>
                 </Link>
               </div>
             </div>
           ))}
         </div>
-
         {/* View All/Less Button */}
         {doctors.length > 6 && (
           <div className="text-center mt-12">
